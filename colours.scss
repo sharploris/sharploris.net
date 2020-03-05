@@ -4,3 +4,8 @@ $theme-text-colour: white;
 $theme-colour-secondary: #212121;
 
 $primary-background: #f7f7f7;
+
+:export {
+    primary: $theme-colour;
+    secondary: $theme-colour-secondary; 
+}

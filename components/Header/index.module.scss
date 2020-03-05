@@ -1,23 +1,12 @@
 @import '../../colours.scss';
 
-.headerBar {
-  width: 100%;
+.appBar {
   margin-bottom: 20px;
-  background: $theme-colour;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
 }
   
 .logo {
   margin: auto;
   padding: 10px 10px 10px 15px;
-  vertical-align: middle;
-}
-  
-.headerText {
-  font-size: 30px;
-  color: $theme-text-colour;
   vertical-align: middle;
 }
 

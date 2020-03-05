@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import styles from './index.module.scss';
+import { AppBar, Toolbar, IconButton, Button, Typography } from "@material-ui/core";
+import { Menu } from '@material-ui/icons';
+
 // import logo from '../../static/img/lorisLogo.png';
 
 interface INavLink {
@@ -18,21 +21,29 @@ const navBarArray: INavLink[] = [
 export default class Header extends Component {
   render() {
     return (
-      <header className={styles.headerBar}>
-        <img height="50" className={styles.logo} alt="" />
-        <span className={styles.headerText}>
+    <AppBar position="sticky" className={styles.appBar}>
+      <Toolbar>
+        <IconButton edge="start" color="inherit" aria-label="menu">
+          <Menu />
+        </IconButton>
+        <Typography variant="h5">
           Sharp Loris Games
-        </span>
+        </Typography>
         {navBarArray.map(this.renderNavLink)}
-      </header>
+      </Toolbar>
+    </AppBar>
     );
   }
 
   renderNavLink(link: INavLink) {
     return (
-      <Link href={link.url} key={link.displayText}>
-        <a className={styles.linkStyle}>{link.displayText}</a>
-      </Link>
+      <span className={styles.linkStyle} key={link.displayText}>
+        <Link href={link.url}>
+          <Button color="inherit">
+            {link.displayText}
+          </Button>
+        </Link>
+      </span>
     );
   }
 }
