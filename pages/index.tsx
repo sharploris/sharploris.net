@@ -5,15 +5,15 @@ import { NextPage } from 'next'
 
 const IndexPage: NextPage = () => {
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
+    <Layout title="Home | Sharp Loris Games">
       <h1>Hello Next.js 👋</h1>
       <p>
         <Link href="/about">
-          <a>About</a>
+          <a title="About Page">About</a>
         </Link>
       </p>
     </Layout>
   )
 }
 
-export default IndexPage
+export default IndexPage;
