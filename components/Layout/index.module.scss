@@ -1,1 +1,13 @@
 @import '../../colours.scss';
+
+.appWrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.appBody {
+    margin: 0 auto;
+    max-width: 1024px;
+}

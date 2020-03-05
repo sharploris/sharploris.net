@@ -3,6 +3,18 @@ import Link from "next/link";
 import styles from './index.module.scss';
 // import logo from '../../static/img/lorisLogo.png';
 
+interface INavLink {
+  displayText: string;
+  url: string;
+}
+
+const navBarArray: INavLink[] = [
+  { displayText: 'Home', url: '/' },
+  { displayText: 'About', url: '/about' },
+  { displayText: 'Users', url: '/users' },
+  { displayText: 'People', url: '/people' },
+]
+
 export default class Header extends Component {
   render() {
     return (
@@ -11,13 +23,16 @@ export default class Header extends Component {
         <span className={styles.headerText}>
           Sharp Loris Games
         </span>
-        <Link href="/">
-            <a className={styles.linkStyle}>Home</a>
-        </Link>
-        <Link href="/about">
-            <a className={styles.linkStyle}>About</a>
-        </Link>
+        {navBarArray.map(this.renderNavLink)}
       </header>
+    );
+  }
+
+  renderNavLink(link: INavLink) {
+    return (
+      <Link href={link.url}>
+        <a className={styles.linkStyle}>{link.displayText}</a>
+      </Link>
     );
   }
 }
