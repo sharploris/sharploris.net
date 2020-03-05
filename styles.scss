@@ -1,6 +1,3 @@
-import css from 'styled-jsx/css';
-
-export default css.global`
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -24,4 +21,3 @@ code {
 .centered {
     text-align: center;
 }
-`

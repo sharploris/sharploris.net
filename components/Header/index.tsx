@@ -30,7 +30,7 @@ export default class Header extends Component {
 
   renderNavLink(link: INavLink) {
     return (
-      <Link href={link.url}>
+      <Link href={link.url} key={link.displayText}>
         <a className={styles.linkStyle}>{link.displayText}</a>
       </Link>
     );
