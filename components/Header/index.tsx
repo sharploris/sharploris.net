@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import styles from './index.module.scss';
-import { AppBar, Toolbar, IconButton, Button, Typography } from "@material-ui/core";
-import { Menu } from '@material-ui/icons';
+import { AppBar, Toolbar, Button, Typography } from "@material-ui/core";
 
 // import logo from '../../static/img/lorisLogo.png';
 
@@ -23,9 +22,6 @@ export default class Header extends Component {
     return (
     <AppBar position="sticky" className={styles.appBar}>
       <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <Menu />
-        </IconButton>
         <Typography variant="h5">
           Sharp Loris Games
         </Typography>

@@ -16,10 +16,10 @@ export default class PeoplePage extends Component {
               twitterUrl="https://twitter.com/DanielW094"
               linkedinUrl="https://www.linkedin.com/in/daniel-williams-4295b8a8"
               githubUrl="https://github.com/DanielW093"
+              portfolioUrl="http://danielwilliams.sharploris.net/"
               contactEmail="contact@sharploris.net"
             />
             <h4>Software Engineer and Game Developer</h4>
-            <a href="http://danielwilliams.sharploris.net/" target="_blank" rel="noopener noreferrer"><h4>Portfolio</h4></a>
           </div>
           <br />
           <br />
@@ -28,10 +28,10 @@ export default class PeoplePage extends Component {
               personName="Jess Molloy"
               twitterUrl="https://twitter.com/jessabellerina"
               linkedinUrl="https://www.linkedin.com/in/jessmolloyga/"
+              portfolioUrl="http://jessmolloy.sharploris.net/"
               contactEmail="jessmolloyga@gmail.com"
             />
             <h4>Games Art, Design & Accessibility</h4>
-            <a href="http://jessmolloy.sharploris.net/" target="_blank" rel="noopener noreferrer"><h4>Portfolio</h4></a>
           </div>
           <br />
           <br />

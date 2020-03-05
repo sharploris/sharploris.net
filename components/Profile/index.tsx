@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import styles from './index.module.scss';
-import { Twitter, LinkedIn, GitHub, EmailOutlined } from '@material-ui/icons';
+import { Twitter, LinkedIn, GitHub, EmailOutlined, Web } from '@material-ui/icons';
 
 interface IProfileProps {
   personName: string;
   twitterUrl?: string;
   linkedinUrl?: string;
   githubUrl?: string;
+  portfolioUrl?: string;
   contactEmail?: string;
 }
 
@@ -14,7 +15,8 @@ enum SocialType {
   Twitter = "Twitter",
   LinkedIn = "LinkedIn",
   GitHub = "GitHub",
-  Email = "Email"
+  Email = "Email",
+  Portfolio = "Portfolio"
 }
 
 export default class Profile extends Component<IProfileProps, {}> {
@@ -25,6 +27,7 @@ export default class Profile extends Component<IProfileProps, {}> {
           {this.props.twitterUrl && this.renderLink(SocialType.Twitter, this.props.twitterUrl)}
           {this.props.linkedinUrl && this.renderLink(SocialType.LinkedIn, this.props.linkedinUrl)}
           {this.props.githubUrl && <span className={styles.githubIcon}>{this.renderLink(SocialType.GitHub, this.props.githubUrl)}</span>}
+          {this.props.portfolioUrl && this.renderLink(SocialType.Portfolio, this.props.portfolioUrl)}
           {this.props.contactEmail && this.renderLink(SocialType.Email, `mailto:${this.props.contactEmail}`)}
         </div>
       );
@@ -48,6 +51,8 @@ export default class Profile extends Component<IProfileProps, {}> {
           return <GitHub style={{fontSize: 60}}>{this.renderAccessibilityText(type)}</GitHub>;
         case SocialType.Email:
           return <EmailOutlined style={{fontSize: 72}}>{this.renderAccessibilityText(type)}</EmailOutlined>
+        case SocialType.Portfolio:
+          return <Web style={{fontSize: 72}}>{this.renderAccessibilityText(type)}</Web>
       }
     }
 
