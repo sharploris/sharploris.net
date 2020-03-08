@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import Head from 'next/head'
 import Header from '../Header'
 import Footer from './../Footer/index';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme, Container } from '@material-ui/core';
 
 type Props = {
   title?: string
@@ -46,9 +46,9 @@ export default class Layout extends Component<Props> {
       {/* Actual Layout */}
       <div className={styles.appWrapper}>
         <Header/>
-        <div className={styles.appBody}>
+        <Container>
           {this.props.children}
-        </div>
+        </Container>
         <Footer/>
       </div>
     </ThemeProvider>
