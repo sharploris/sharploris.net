@@ -37,7 +37,7 @@ export default class Layout extends Component<Props> {
       <ThemeProvider theme={theme}>
       {/*Boilerplate*/}
       <Head>
-        <title>{this.props.title}</title>
+        <title>{`${this.props.title} | Sharp Loris Games`}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>

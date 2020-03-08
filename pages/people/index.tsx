@@ -7,7 +7,7 @@ import { Grid } from "@material-ui/core";
 export default class PeoplePage extends Component {
   render() {
     return (
-      <Layout>
+      <Layout title="People">
         <div className="centered">
           <h1>People</h1>
           <Grid container spacing={2}> {/*Page Grid*/}

@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 export default class AboutPage extends Component {
   render() {
     return (
-      <Layout title="About | Next.js + TypeScript Example">
+      <Layout title="About">
         <h1>About</h1>
         <p>This is the about page</p>
         <p>
