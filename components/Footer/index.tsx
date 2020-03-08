@@ -4,8 +4,8 @@ import styles from './index.module.scss';
 export default class Footer extends Component {
   private readonly year: number;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.year = new Date().getFullYear();
   }
