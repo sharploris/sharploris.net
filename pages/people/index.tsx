@@ -40,7 +40,7 @@ export default class PeoplePage extends Component {
                     portfolioUrl="http://jessmolloy.sharploris.net/"
                     contactEmail="jessmolloyga@gmail.com"
                   />
-                  <h4>Games Art, Design & Accessibility</h4>
+                  <h4>Games Design, Art & Accessibility</h4>
                 </Grid>
               </Grid>
             </Grid>
