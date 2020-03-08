@@ -3,8 +3,6 @@ import Link from "next/link";
 import styles from './index.module.scss';
 import { AppBar, Toolbar, Button, Typography } from "@material-ui/core";
 
-// import logo from '../../static/img/lorisLogo.png';
-
 interface INavLink {
   displayText: string;
   url: string;
@@ -22,6 +20,7 @@ export default class Header extends Component {
     return (
     <AppBar position="sticky" className={styles.appBar}>
       <Toolbar>
+        <img className={styles.logo} src="/img/lorisLogo.png"></img>
         <Typography variant="h5">
           Sharp Loris Games
         </Typography>
