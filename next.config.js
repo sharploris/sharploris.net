@@ -19,24 +19,24 @@ module.exports = withSass({
       return localName;
     }
   },
-  exportTrailingSlash: true,
-  exportPathMap: async function() {
-    const paths = {
-      '/': { page: '/' },
-      '/about': { page: '/about' },
-      '/people': { page: '/people' }
-    }
+  // exportTrailingSlash: true,
+  // exportPathMap: async function() {
+  //   const paths = {
+  //     '/': { page: '/' },
+  //     '/about': { page: '/about' },
+  //     '/people': { page: '/people' }
+  //   }
 
-    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-    const data = await res.json();
-    const shows = data.map(entry => entry.show);
+  //   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+  //   const data = await res.json();
+  //   const shows = data.map(entry => entry.show);
 
-    shows.forEach(show => {
-      paths[`/post/${show.id}`] = { page: '/post/[id]', query: { id: show.id } };
-    });
+  //   shows.forEach(show => {
+  //     paths[`/post/${show.id}`] = { page: '/post/[id]', query: { id: show.id } };
+  //   });
 
-    return paths;
-  }
+  //   return paths;
+  // }
 })
 
 // Code lifted and modified from CSS loader - for generating hashes from localIdentName
