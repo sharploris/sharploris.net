@@ -14,7 +14,8 @@ interface IHeaderState {
 }
 
 const navBarArray: INavLink[] = [
-  { displayText: 'Home', url: '/' },
+  // { displayText: 'Home', url: '/' },
+  { displayText: 'Blog', url: '/blog' },
   { displayText: 'People', url: '/people' },
 ]
 
