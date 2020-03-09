@@ -2,11 +2,25 @@ import * as React from 'react'
 import Link from 'next/link'
 import Layout from '../../components/Layout'
 import { Component } from 'react';
-import GetAllBlogPostUidsGateway from './../../api/gateways/GetAllBlogPostUids/index';
-import { IBlogPostUid } from '../../api/models/blog_post';
+import { IBlogPostPreview } from '../../api/models/blog_post';
+import GetBlogPostPreviewsGateway from './../../api/gateways/GetBlogPostPreviews/index';
+import { RichText } from '../../api/prismic-types';
 
 interface IIndexProps {
-  posts: IBlogPostUid[];
+  posts: IBlogPostPreview[];
+}
+
+//Add support for URL queries for page number, number of results
+//Add support for get static paths for 10, 20, 50 results for each page
+export async function unstable_getStaticProps() {
+  const gateway = new GetBlogPostPreviewsGateway();
+  const posts = await gateway.Execute(1, 20);
+
+  return { 
+    props: {
+      posts: posts.results
+    } 
+  };
 }
 
 export default class Index extends Component<IIndexProps, {}> {
@@ -16,31 +30,18 @@ export default class Index extends Component<IIndexProps, {}> {
     return (
       <Layout title="Blog">
         <h1>Blog Posts</h1>
-        <ul>
-          {props.posts.map(this.renderPostLink)}
-        </ul>
+        {props.posts.map(this.renderPostLink)}
       </Layout>
     )
   }
 
-  public static async getInitialProps() {
-    const gateway = new GetAllBlogPostUidsGateway();
-    const response = await gateway.Execute();
-  
-    console.log(`Posts fetched. Count: ${response.results.length}`);
-  
-    return {
-      posts: response.results
-    };
-  }
-
-  private renderPostLink(post: IBlogPostUid){
+  private renderPostLink(post: IBlogPostPreview){
     return (
-      <li key={post.uid}>
+      <div key={post.uid}>
         <Link href="blog/post/[id]" as={`blog/post/${post.uid}`}>
-          <a>{post.uid}</a>
+          <a>{RichText.asText(post.data.title)}</a>
         </Link>
-      </li>
+      </div>
     );
   }
 }

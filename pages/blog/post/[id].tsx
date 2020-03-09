@@ -6,18 +6,13 @@ import GetAllBlogPostUidsGateway from '../../../api/gateways/GetAllBlogPostUids'
 import { IBlogPost } from '../../../api/models/blog_post/index';
 import GetBlogPostByUidGateway from '../../../api/gateways/GetBlogPostByUid/index';
 import { RichText } from '../../../api/prismic-types';
+import { Params } from 'next/dist/next-server/server/router';
 
 interface IPostProps extends WithRouterProps {
   post: IBlogPost
 }
 
-interface IParams {
-  params: {
-    id: string
-  }
-}
-
-export async function unstable_getStaticProps(params: IParams) {
+export async function unstable_getStaticProps(params: Params) {
   const { id } = params.params;
 
   const gateway = new GetBlogPostByUidGateway();
