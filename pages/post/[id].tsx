@@ -23,7 +23,7 @@ class Post extends Component<IPostProps, {}> {
     const props = this.props;
 
     return (
-      <Layout>
+      <Layout title={props.show.name}>
         <h1>{props.show.name}</h1>
         <p>{props.show.summary.replace(/<[/]?[pb]>/g, '')}</p>
         {props.show.image ? <img src={props.show.image.medium} /> : null}
