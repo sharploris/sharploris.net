@@ -27,7 +27,7 @@ export default class Index extends Component<IIndexProps, {}> {
     )
   }
 
-  public static async getStaticProps() {
+  public static async getInitialProps() {
     const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const data = await res.json();
   
