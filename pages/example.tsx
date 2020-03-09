@@ -6,7 +6,7 @@ interface IExampleProps {
 }
 
 export default class AboutPage extends React.Component<IExampleProps> {
-  static async getInitialProps({ req }: NextPageContext) {
+  static async getStaticProps({ req }: NextPageContext) {
     const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
     return { userAgent }
   }

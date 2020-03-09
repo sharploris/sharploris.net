@@ -31,7 +31,7 @@ class Post extends Component<IPostProps, {}> {
     );
   }
 
-  public static async getInitialProps(context: NextRouter) {
+  public static async getStaticProps(context: NextRouter) {
     const { id } = context.query;
 
     const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
