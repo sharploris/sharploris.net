@@ -6,6 +6,7 @@
     "start": "next start",
     "build": "next build",
     "export": "next export",
+    "full-deploy": "npm run build && npm run export",
     "type-check": "tsc"
   },
   "dependencies": {
