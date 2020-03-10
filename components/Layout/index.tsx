@@ -46,7 +46,7 @@ export default class Layout extends Component<Props> {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {this.props.description && <meta name="description" content={this.props.description}></meta>}
-        {this.props.thumbnailUrl && <meta key="image" property='og:image' content={this.props.thumbnailUrl} />}
+        {this.props.thumbnailUrl && <meta property='og:image' content={this.props.thumbnailUrl} />}
       </Head>
       {/*End Boilerplate*/}
   
