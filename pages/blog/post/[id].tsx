@@ -4,9 +4,9 @@ import { Component } from 'react';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import GetAllBlogPostUidsGateway from '../../../api/gateways/GetAllBlogPostUids';
 import { IBlogPost } from '../../../api/models/blog_post/index';
-import GetBlogPostByUidGateway from '../../../api/gateways/GetBlogPostByUid/index';
 import { RichText } from '../../../api/prismic-types';
 import { Params } from 'next/dist/next-server/server/router';
+import GetAllBlogPostGateway from './../../../api/gateways/GetAllBlogPosts/index';
 
 interface IPostProps extends WithRouterProps {
   post: IBlogPost
@@ -15,8 +15,9 @@ interface IPostProps extends WithRouterProps {
 export async function unstable_getStaticProps(params: Params) {
   const { id } = params.params;
 
-  const gateway = new GetBlogPostByUidGateway();
-  const post = await gateway.Execute(id);
+  const gateway = new GetAllBlogPostGateway();
+  const response = await gateway.Execute();
+  const post = response.posts[id];
 
   return { 
     props: {
