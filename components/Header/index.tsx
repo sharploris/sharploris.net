@@ -46,9 +46,13 @@ export default class Header extends Component<{}, IHeaderState> {
     return (
       <>
         <img className={styles.logo} src="/img/lorisLogo.png" />
-        <Typography variant="h5">
-          Sharp Loris Games
-        </Typography>
+        <Link href="/">
+          <a className={styles.headerText}>
+            <Typography variant="h5" >
+              Sharp Loris Games
+            </Typography>
+          </a>
+        </Link>
         <Hidden mdDown>
           {navBarArray.map(this.renderNavLink)}
         </Hidden>
