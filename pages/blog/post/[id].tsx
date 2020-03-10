@@ -7,7 +7,6 @@ import { IBlogPost } from '../../../api/models/blog_post/index';
 import GetBlogPostByUidGateway from '../../../api/gateways/GetBlogPostByUid/index';
 import { RichText } from '../../../api/prismic-types';
 import { Params } from 'next/dist/next-server/server/router';
-import Head from 'next/head';
 
 interface IPostProps extends WithRouterProps {
   post: IBlogPost
@@ -53,11 +52,7 @@ class Post extends Component<IPostProps, {}> {
     const outline = RichText.asText(postData.outline);
 
     return (
-      <Layout title={title}>
-        <Head>
-          <meta name="description" content={outline}></meta>
-          <meta key="image" property='og:image' content={postData.featured_image.url} />
-        </Head>
+      <Layout title={title} description={outline} thumbnailUrl={postData.featured_image.url}>
         <h1>{title}</h1>
         <RichText render={postData.outline} />
       </Layout>
