@@ -21,7 +21,7 @@ export default class GetAllBlogPostUidsGateway {
 
         let results = response.results;
         const totalPages = response.total_pages;
-        for (let i = 2; i < totalPages; i++) {
+        for (let i = 2; i <= totalPages; i++) {
             let page = await this.GetPage(i);
             results = results.concat(page.results);
         }
