@@ -12,7 +12,7 @@ interface IIndexProps {
 
 //Add support for URL queries for page number, number of results
 //Add support for get static paths for 10, 20, 50 results for each page
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   const gateway = new GetBlogPostPreviewsGateway();
   const posts = await gateway.Execute(1, 20);
 

@@ -12,7 +12,7 @@ interface IPostProps extends WithRouterProps {
   post: IBlogPost
 }
 
-export async function unstable_getStaticProps(params: Params) {
+export async function getStaticProps(params: Params) {
   const { id } = params.params;
 
   const gateway = new GetBlogPostByUidGateway();
@@ -25,7 +25,7 @@ export async function unstable_getStaticProps(params: Params) {
   };
 }
 
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const gateway = new GetAllBlogPostUidsGateway();
   const response = await gateway.Execute();
 
@@ -36,6 +36,7 @@ export async function unstable_getStaticPaths() {
   });
 
   return {
+    fallback: false,
     paths: ids
   }
 }
