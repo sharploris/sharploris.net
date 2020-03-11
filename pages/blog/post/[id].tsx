@@ -41,6 +41,7 @@ export async function getStaticPaths() {
   }
 }
 
+//TODO: Could use material UI speed dial component for social media share icons on posts
 class Post extends Component<IPostProps, {}> {
   public render() {
     if (!this.props.post) {

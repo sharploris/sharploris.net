@@ -7,8 +7,10 @@ import GetBlogPostPreviewsGateway from '../../api/gateways/GetBlogPostPreviews/i
 import { RichText } from '../../api/prismic-types';
 import GetAllBlogPostUidsGateway from '../../api/gateways/GetAllBlogPostUids';
 import { WithRouterProps } from 'next/dist/client/with-router';
-import { withRouter } from 'next/router';
+import Router, { withRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
+import { Pagination } from '@material-ui/lab';
+
 
 const pageSize = 10;
 
@@ -22,13 +24,14 @@ interface IBlogPageProps extends WithRouterProps {
 //Add support for get static paths for 10, 20, 50 results for each page
 export async function getStaticProps(params: Params) {
   const { page } = params.params;
+  const currentPage = parseInt(page);
 
   const gateway = new GetBlogPostPreviewsGateway();
-  const posts = await gateway.Execute(page, pageSize);
+  const posts = await gateway.Execute(currentPage, pageSize);
 
   return { 
     props: {
-      currentPage: page,
+      currentPage: currentPage,
       totalPages: posts.total_pages,
       posts: posts.results
     } 
@@ -54,6 +57,8 @@ export async function getStaticPaths() {
   }
 }
 
+
+//TODO: Try making the root page of the blog be with no argument
 class BlogPage extends Component<IBlogPageProps, {}> {
   public render() {
     const props = this.props;
@@ -62,6 +67,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
       <Layout title="Blog">
         <h1>Blog Posts</h1>
         {props.posts.map(this.renderPostLink)}
+        {this.renderPagination(props)}
       </Layout>
     )
   }
@@ -74,6 +80,26 @@ class BlogPage extends Component<IBlogPageProps, {}> {
         </Link>
       </div>
     );
+  }
+
+  private renderPagination(props: IBlogPageProps) {
+    return (
+      <Pagination 
+        count={props.totalPages} 
+        defaultPage={props.currentPage} 
+        color="primary" 
+        variant="outlined" 
+        size="large" 
+        showFirstButton 
+        showLastButton
+        onChange={this.changePages}
+      />
+    );
+  }
+
+  private changePages(event: any, value: number) {
+    event; //Suppress annoying error
+    Router.push(`/blog/${value}`);
   }
 }
 
