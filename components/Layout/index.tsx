@@ -40,7 +40,7 @@ export default class Layout extends Component<Props> {
     return (
       <ThemeProvider theme={theme}>
       
-      {this.renderMetaData}
+      {this.renderMetaData()}
   
       <div className={styles.appWrapper}>
         <Header/>
