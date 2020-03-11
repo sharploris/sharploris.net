@@ -13,6 +13,8 @@ import { Params } from 'next/dist/next-server/server/router';
 const pageSize = 10;
 
 interface IBlogPageProps extends WithRouterProps {
+  currentPage: number;
+  totalPages: number;
   posts: IBlogPostPreview[];
 }
 
@@ -26,6 +28,8 @@ export async function getStaticProps(params: Params) {
 
   return { 
     props: {
+      currentPage: page,
+      totalPages: posts.total_pages,
       posts: posts.results
     } 
   };
