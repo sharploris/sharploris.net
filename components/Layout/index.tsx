@@ -48,6 +48,7 @@ export default class Layout extends Component<Props> {
         {/* <meta name='twitter:title' content={embedTitle} /> */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="twitter:card" content="summary_large_image"></meta>
 
         {
           this.props.description && 
