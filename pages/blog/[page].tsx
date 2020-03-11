@@ -69,7 +69,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
   private renderPostLink(post: IBlogPostPreview){
     return (
       <div key={post.uid}>
-        <Link href="blog/post/[id]" as={`blog/post/${post.uid}`}>
+        <Link href="/blog/post/[id]" as={`/blog/post/${post.uid}`}>
           <a>{RichText.asText(post.data.title)}</a>
         </Link>
       </div>
