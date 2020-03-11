@@ -37,16 +37,34 @@ export default class Layout extends Component<Props> {
   }
 
   render() {
+    const embedTitle = this.props.title || "Sharp Loris Games";
+
     return (
       <ThemeProvider theme={theme}>
       {/*Boilerplate*/}
       <Head>
         <title>{this.props.title ? `${this.props.title} | Sharp Loris Games` : "Sharp Loris Games"}</title>
-        <meta property='og:title' content={this.props.title ? this.props.title : "Sharp Loris Games"}></meta>
+        <meta property='og:title' content={embedTitle}></meta>
+        {/* <meta name='twitter:title' content={embedTitle} /> */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {this.props.description && <meta name="description" content={this.props.description}></meta>}
-        {this.props.thumbnailUrl && <meta property='og:image' content={this.props.thumbnailUrl} />}
+
+        {
+          this.props.description && 
+          <>
+            <meta name="description" content={this.props.description}></meta>
+            <meta property="og:description" content={this.props.description} />
+            {/* <meta name="twitter:description" content={this.getTwitterDescription(this.props.description)} /> */}
+          </>
+        }
+
+        {
+          this.props.thumbnailUrl && 
+          <>
+            <meta property='og:image' content={this.props.thumbnailUrl} />
+            {/* <meta name='twitter:image' content={this.props.thumbnailUrl} /> */}
+          </>
+        }
       </Head>
       {/*End Boilerplate*/}
   
@@ -60,5 +78,16 @@ export default class Layout extends Component<Props> {
       </div>
     </ThemeProvider>
     )
+  }
+
+  getTwitterDescription(desc: string) {
+    if (desc.length <= 200) {
+      return desc;
+    }
+
+    let newVal = desc.substr(0, 197);
+    newVal += "...";
+
+    return newVal;
   }
 }
