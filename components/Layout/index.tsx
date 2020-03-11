@@ -37,39 +37,11 @@ export default class Layout extends Component<Props> {
   }
 
   render() {
-    const embedTitle = this.props.title || "Sharp Loris Games";
-
     return (
       <ThemeProvider theme={theme}>
-      {/*Boilerplate*/}
-      <Head>
-        <title>{this.props.title ? `${this.props.title} | Sharp Loris Games` : "Sharp Loris Games"}</title>
-        <meta property='og:title' content={embedTitle}></meta>
-        {/* <meta name='twitter:title' content={embedTitle} /> */}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="twitter:card" content="summary_large_image"></meta>
-
-        {
-          this.props.description && 
-          <>
-            <meta name="description" content={this.props.description}></meta>
-            <meta property="og:description" content={this.props.description} />
-            {/* <meta name="twitter:description" content={this.getTwitterDescription(this.props.description)} /> */}
-          </>
-        }
-
-        {
-          this.props.thumbnailUrl && 
-          <>
-            <meta property='og:image' content={this.props.thumbnailUrl} />
-            {/* <meta name='twitter:image' content={this.props.thumbnailUrl} /> */}
-          </>
-        }
-      </Head>
-      {/*End Boilerplate*/}
+      
+      {this.renderMetaData}
   
-      {/* Actual Layout */}
       <div className={styles.appWrapper}>
         <Header/>
         <Container>
@@ -81,14 +53,34 @@ export default class Layout extends Component<Props> {
     )
   }
 
-  getTwitterDescription(desc: string) {
-    if (desc.length <= 200) {
-      return desc;
-    }
+  renderMetaData() {
+    const embedTitle = this.props.title || "Sharp Loris Games";
 
-    let newVal = desc.substr(0, 197);
-    newVal += "...";
+    return (
+      <Head>
+        <title>{this.props.title ? `${this.props.title} | Sharp Loris Games` : "Sharp Loris Games"}</title>
+        <meta property='og:title' content={embedTitle}></meta>
 
-    return newVal;
+        {
+          this.props.description && 
+          <>
+            <meta name="description" content={this.props.description}></meta>
+            <meta property="og:description" content={this.props.description} />
+          </>
+        }
+
+        {
+          this.props.thumbnailUrl && 
+          <>
+            <meta property='og:image' content={this.props.thumbnailUrl} />
+          </>
+        }
+
+        <meta name="twitter:card" content="summary_large_image"></meta>
+
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+    )
   }
 }
