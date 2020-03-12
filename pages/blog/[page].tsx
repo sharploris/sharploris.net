@@ -106,6 +106,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               className={styles.paginationNav}
               count={props.totalPages} 
               defaultPage={props.currentPage} 
+              page={props.currentPage}
               color="primary" 
               variant="outlined"
               onChange={this.changePages}
@@ -116,6 +117,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               className={styles.paginationNav}
               count={props.totalPages} 
               defaultPage={props.currentPage} 
+              page={props.currentPage}
               color="primary" 
               variant="outlined"
               size="small"
@@ -126,7 +128,8 @@ class BlogPage extends Component<IBlogPageProps, {}> {
     );
   }
 
-  private changePages(event: any, value: number) {
+
+  private changePages = (event: any, value: number) => {
     event; //Suppress annoying error
     Router.push(`/blog/${value}`);
   }
