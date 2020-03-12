@@ -10,7 +10,8 @@ import { WithRouterProps } from 'next/dist/client/with-router';
 import Router, { withRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
 import { Pagination } from '@material-ui/lab';
-
+import styles from './index.module.scss';
+import { Hidden } from '@material-ui/core';
 
 const pageSize = 10;
 
@@ -63,11 +64,14 @@ class BlogPage extends Component<IBlogPageProps, {}> {
   public render() {
     const props = this.props;
 
+    const pagination = this.renderPagination(props);
+
     return (
       <Layout title="Blog">
         <h1>Blog Posts</h1>
+        {pagination}
         {props.posts.map(this.renderPostLink)}
-        {this.renderPagination(props)}
+        {pagination}
       </Layout>
     )
   }
@@ -82,18 +86,58 @@ class BlogPage extends Component<IBlogPageProps, {}> {
     );
   }
 
+  //TODO: Refactor this into its own component
   private renderPagination(props: IBlogPageProps) {
     return (
-      <Pagination 
-        count={props.totalPages} 
-        defaultPage={props.currentPage} 
-        color="primary" 
-        variant="outlined" 
-        size="large" 
-        showFirstButton 
-        showLastButton
-        onChange={this.changePages}
-      />
+      <span>
+        <Hidden smDown>
+          <div className={`${styles.paginationContainer} ${styles.large}`}>
+            <Pagination 
+              className={styles.paginationNav}
+              count={props.totalPages} 
+              defaultPage={props.currentPage} 
+              color="primary" 
+              variant="outlined"
+              size="large"
+              boundaryCount={2}
+              siblingCount={2}
+              hidePrevButton hideNextButton
+              onChange={this.changePages}
+            />
+          </div>
+        </Hidden>
+        <Hidden mdUp xsDown>
+          <div className={`${styles.paginationContainer} ${styles.medium}`}>
+            <Pagination 
+              className={styles.paginationNav}
+              count={props.totalPages} 
+              defaultPage={props.currentPage} 
+              color="primary" 
+              variant="outlined"
+              boundaryCount={2}
+              siblingCount={2}
+              hidePrevButton hideNextButton
+              onChange={this.changePages}
+            />
+          </div>
+        </Hidden>
+        <Hidden smUp>
+          <div className={`${styles.paginationContainer} ${styles.small}`}>
+            <Pagination 
+              className={styles.paginationNav}
+              count={props.totalPages} 
+              defaultPage={props.currentPage} 
+              color="primary" 
+              variant="outlined"
+              size="small"
+              boundaryCount={1}
+              siblingCount={2}
+              hidePrevButton hideNextButton
+              onChange={this.changePages}
+            />
+          </div>
+        </Hidden>
+      </span>
     );
   }
 
