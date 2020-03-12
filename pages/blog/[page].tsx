@@ -11,7 +11,8 @@ import Router, { withRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
 import { Pagination } from '@material-ui/lab';
 import styles from './index.module.scss';
-import { Hidden } from '@material-ui/core';
+import { Hidden, Badge } from '@material-ui/core';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 const pageSize = 10;
 
@@ -76,7 +77,10 @@ class BlogPage extends Component<IBlogPageProps, {}> {
     )
   }
 
-  private renderPostLink(post: IBlogPostPreview){
+  private renderPostLink = (post: IBlogPostPreview) => {
+    const commentsBadge = this.renderCommentBadge(0);
+    commentsBadge;
+
     return (
       <div key={post.uid}>
         <Link href="/blog/post/[id]" as={`/blog/post/${post.uid}`}>
@@ -84,6 +88,14 @@ class BlogPage extends Component<IBlogPageProps, {}> {
         </Link>
       </div>
     );
+  }
+
+  private renderCommentBadge(comments: number) {
+    return (
+      <Badge badgeContent={comments} color="primary">
+        <ChatBubbleIcon color="secondary" />
+      </Badge>
+    )
   }
 
   //TODO: Refactor this into its own component
