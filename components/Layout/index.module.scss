@@ -4,8 +4,12 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: $primary-background;
 }
 
 .appContainer {
+    min-height: calc(100vh - 114px);
+    padding-top: 20px;
     padding-bottom: 50px;
+    background: $secondary-background;
 }
