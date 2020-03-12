@@ -95,6 +95,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               className={styles.paginationNav}
               count={props.totalPages} 
               defaultPage={props.currentPage} 
+              page={props.currentPage}
               color="primary" 
               variant="outlined"
               size="large"
