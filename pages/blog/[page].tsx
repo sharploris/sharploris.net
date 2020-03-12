@@ -98,9 +98,6 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               color="primary" 
               variant="outlined"
               size="large"
-              boundaryCount={2}
-              siblingCount={2}
-              hidePrevButton hideNextButton
               onChange={this.changePages}
             />
         </Hidden>
@@ -111,9 +108,6 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               defaultPage={props.currentPage} 
               color="primary" 
               variant="outlined"
-              boundaryCount={2}
-              siblingCount={2}
-              hidePrevButton hideNextButton
               onChange={this.changePages}
             />
         </Hidden>
@@ -125,9 +119,6 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               color="primary" 
               variant="outlined"
               size="small"
-              boundaryCount={1}
-              siblingCount={2}
-              hidePrevButton hideNextButton
               onChange={this.changePages}
             />
         </Hidden>
