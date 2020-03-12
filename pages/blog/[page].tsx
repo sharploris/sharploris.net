@@ -89,9 +89,8 @@ class BlogPage extends Component<IBlogPageProps, {}> {
   //TODO: Refactor this into its own component
   private renderPagination(props: IBlogPageProps) {
     return (
-      <span>
+      <div className={styles.paginationContainer}>
         <Hidden smDown>
-          <div className={`${styles.paginationContainer} ${styles.large}`}>
             <Pagination 
               className={styles.paginationNav}
               count={props.totalPages} 
@@ -104,10 +103,8 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               hidePrevButton hideNextButton
               onChange={this.changePages}
             />
-          </div>
         </Hidden>
         <Hidden mdUp xsDown>
-          <div className={`${styles.paginationContainer} ${styles.medium}`}>
             <Pagination 
               className={styles.paginationNav}
               count={props.totalPages} 
@@ -119,10 +116,8 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               hidePrevButton hideNextButton
               onChange={this.changePages}
             />
-          </div>
         </Hidden>
         <Hidden smUp>
-          <div className={`${styles.paginationContainer} ${styles.small}`}>
             <Pagination 
               className={styles.paginationNav}
               count={props.totalPages} 
@@ -135,9 +130,8 @@ class BlogPage extends Component<IBlogPageProps, {}> {
               hidePrevButton hideNextButton
               onChange={this.changePages}
             />
-          </div>
         </Hidden>
-      </span>
+      </div>
     );
   }
 
