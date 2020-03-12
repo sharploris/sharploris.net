@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from './index.module.scss';
 import { AppBar, Toolbar, Button, Typography, IconButton, Hidden } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
+import { homeUrl } from './../../utils/global-data';
 
 interface INavLink {
   displayText: string;
@@ -15,7 +16,7 @@ interface IHeaderState {
 
 const navBarArray: INavLink[] = [
   // { displayText: 'Home', url: '/' },
-  { displayText: 'Blog', url: '/blog' },
+  { displayText: 'Blog', url: '/blog/1' },
   { displayText: 'People', url: '/people' },
 ]
 
@@ -46,7 +47,7 @@ export default class Header extends Component<{}, IHeaderState> {
     return (
       <>
         <img className={styles.logo} src="/img/lorisLogo.png" />
-        <Link href="/">
+        <Link href={homeUrl}>
           <a className={styles.headerText}>
             <Typography variant="h5" >
               Sharp Loris Games
