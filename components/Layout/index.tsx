@@ -44,7 +44,7 @@ export default class Layout extends Component<Props> {
   
       <div className={styles.appWrapper}>
         <Header/>
-        <Container>
+        <Container className={styles.appContainer}>
           {this.props.children}
         </Container>
         <Footer/>
