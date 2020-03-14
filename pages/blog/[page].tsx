@@ -1,7 +1,8 @@
 import * as React from 'react'
+import { Component } from 'react';
+// import styles from './index.module.scss';
 import Link from 'next/link'
 import Layout from '../../components/Layout'
-import { Component } from 'react';
 import { IBlogPostPreview } from '../../api/models/blog_post';
 import GetBlogPostPreviewsGateway from '../../api/gateways/GetBlogPostPreviews/index';
 import { RichText } from '../../api/prismic-types';
@@ -9,10 +10,9 @@ import GetAllBlogPostUidsGateway from '../../api/gateways/GetAllBlogPostUids';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import Router, { withRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
-import { Pagination } from '@material-ui/lab';
-import styles from './index.module.scss';
-import { Hidden, Badge } from '@material-ui/core';
+import { Badge } from '@material-ui/core';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import PageControls from '../../components/Common/Pagination';
 
 const pageSize = 10;
 
@@ -59,13 +59,11 @@ export async function getStaticPaths() {
   }
 }
 
-
-//TODO: Try making the root page of the blog be with no argument
 class BlogPage extends Component<IBlogPageProps, {}> {
   public render() {
     const props = this.props;
 
-    const pagination = this.renderPagination(props);
+    const pagination = <PageControls onChangePage={this.changePages} currentPage={props.currentPage} totalPages={props.totalPages}/>
 
     return (
       <Layout title="Blog">
@@ -96,49 +94,6 @@ class BlogPage extends Component<IBlogPageProps, {}> {
         <ChatBubbleIcon color="secondary" />
       </Badge>
     )
-  }
-
-  //TODO: Refactor this into its own component
-  private renderPagination(props: IBlogPageProps) {
-    return (
-      <div className={styles.paginationContainer}>
-        <Hidden smDown>
-            <Pagination 
-              className={styles.paginationNav}
-              count={props.totalPages} 
-              defaultPage={props.currentPage} 
-              page={props.currentPage}
-              color="primary" 
-              variant="outlined"
-              size="large"
-              onChange={this.changePages}
-            />
-        </Hidden>
-        <Hidden mdUp xsDown>
-            <Pagination 
-              className={styles.paginationNav}
-              count={props.totalPages} 
-              defaultPage={props.currentPage} 
-              page={props.currentPage}
-              color="primary" 
-              variant="outlined"
-              onChange={this.changePages}
-            />
-        </Hidden>
-        <Hidden smUp>
-            <Pagination 
-              className={styles.paginationNav}
-              count={props.totalPages} 
-              defaultPage={props.currentPage} 
-              page={props.currentPage}
-              color="primary" 
-              variant="outlined"
-              size="small"
-              onChange={this.changePages}
-            />
-        </Hidden>
-      </div>
-    );
   }
 
 
