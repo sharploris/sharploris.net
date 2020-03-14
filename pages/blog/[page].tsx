@@ -12,7 +12,7 @@ import Router, { withRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
 import { Badge } from '@material-ui/core';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
-import PageControls from '../../components/Common/Pagination';
+import PageControls from '../../components/Common/PageControls';
 
 const pageSize = 10;
 
@@ -67,15 +67,14 @@ class BlogPage extends Component<IBlogPageProps, {}> {
 
     return (
       <Layout title="Blog">
-        <h1>Blog Posts</h1>
         {pagination}
-        {props.posts.map(this.renderPostLink)}
+        {props.posts.map(this.renderBlogPost)}
         {pagination}
       </Layout>
     )
   }
 
-  private renderPostLink = (post: IBlogPostPreview) => {
+  private renderBlogPost = (post: IBlogPostPreview) => {
     const commentsBadge = this.renderCommentBadge(0);
     commentsBadge;
 
@@ -84,6 +83,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
         <Link href="/blog/post/[id]" as={`/blog/post/${post.uid}`}>
           <a>{RichText.asText(post.data.title)}</a>
         </Link>
+        <hr/>
       </div>
     );
   }
@@ -95,7 +95,6 @@ class BlogPage extends Component<IBlogPageProps, {}> {
       </Badge>
     )
   }
-
 
   private changePages = (event: any, value: number) => {
     event; //Suppress annoying error
