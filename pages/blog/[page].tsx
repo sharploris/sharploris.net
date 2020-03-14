@@ -80,7 +80,6 @@ class BlogPage extends Component<IBlogPageProps, {}> {
     return (
       <div key={post.uid}>
         <BlogPostPreview content={post} />
-        <hr/>
       </div>
     );
   }

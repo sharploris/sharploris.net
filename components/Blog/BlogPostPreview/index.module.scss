@@ -1,11 +1,12 @@
 @import '../../../colours.scss';
 
+.featuredPost {
+    margin-top: 20px;
+    border-bottom: solid 1px rgba($theme-colour-secondary, 0.25);
+}
 
-.postTitle {
-    margin-bottom: 8px;
 
-    color: $theme-colour-secondary;
-
+.postTitleLink {
     text-decoration: none; // changed from text-decoration:underline
 
     :hover {
@@ -13,6 +14,13 @@
     }
 }
 
+.postTitle {
+    margin-bottom: 8px;
+
+    color: $theme-colour-secondary;
+}
+
 .outline {
     margin-top: 1.5rem;
+    margin-bottom: 20px;
 }

@@ -1,11 +1,11 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import styles from './index.module.scss';
 import Link from "next/link";
 import { IBlogPostPreview } from "../../../api/models/blog_post";
 import { RichText } from "../../../api/prismic-types";
 import { Button } from "@material-ui/core";
-import React from "react";
 import ButtonLink from "../../Common/ButtonLink";
+import FeaturedImage from "../FeaturedImage";
 
 interface IBlogPostPreviewProps {
     content: IBlogPostPreview;
@@ -27,9 +27,12 @@ export default class BlogPostPreview extends Component<IBlogPostPreviewProps, {}
         const blogPost = this.props.content.data;
 
         return (
-            <>
+            <div className={styles.featuredPost}>
                 <Link href="/blog/post/[id]" as={this.url}>
-                    <a className={styles.postTitle}><h2>{this.title}</h2></a>
+                    <a className={styles.postTitleLink}>
+                        <FeaturedImage image={blogPost.featured_image}/>
+                        <h2 className={styles.postTitle}>{this.title}</h2>
+                    </a>
                 </Link>
                 <div className={styles.outline}>
                     <RichText render={blogPost.outline} />
@@ -37,7 +40,7 @@ export default class BlogPostPreview extends Component<IBlogPostPreviewProps, {}
                         View post
                     </Button>
                 </div>
-            </>
+            </div>
         );
     }
 }
