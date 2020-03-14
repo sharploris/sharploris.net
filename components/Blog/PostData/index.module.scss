@@ -1,0 +1,35 @@
+@import '../../../colours.scss';
+
+.postData {
+    align-items: center;
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+.avatar {
+    margin-right: 1.25rem !important;
+    height: 80px !important;
+    width: 80px !important;
+    font-size: 2rem !important;
+    background-color: $theme-colour-secondary !important;
+}
+
+.authorName {
+    margin-bottom: .25rem;
+}
+
+.roleBadge {
+    margin-top: .25rem;
+    margin-right: .25rem;
+}
+
+.commentCount {
+    display: flex;
+    align-items: center;
+    margin-top: .25rem;
+}
+
+.commentText {
+    display: inline-block;
+    margin-left: 0.4rem;
+}

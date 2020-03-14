@@ -8,8 +8,6 @@ import GetAllBlogPostUidsGateway from '../../api/gateways/GetAllBlogPostUids';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import Router, { withRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
-import { Badge } from '@material-ui/core';
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import PageControls from '../../components/Common/PageControls';
 import BlogPostPreview from '../../components/Blog/BlogPostPreview';
 
@@ -74,22 +72,11 @@ class BlogPage extends Component<IBlogPageProps, {}> {
   }
 
   private renderBlogPost = (post: IBlogPostPreview) => {
-    const commentsBadge = this.renderCommentBadge(0);
-    commentsBadge;
-
     return (
       <div key={post.uid}>
         <BlogPostPreview content={post} />
       </div>
     );
-  }
-
-  private renderCommentBadge(comments: number) {
-    return (
-      <Badge badgeContent={comments} color="primary">
-        <ChatBubbleIcon color="secondary" />
-      </Badge>
-    )
   }
 
   private changePages = (event: any, value: number) => {

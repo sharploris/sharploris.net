@@ -6,6 +6,7 @@ import { RichText } from "../../../api/prismic-types";
 import { Button } from "@material-ui/core";
 import ButtonLink from "../../Common/ButtonLink";
 import FeaturedImage from "../FeaturedImage";
+import PostData from "../PostData";
 
 interface IBlogPostPreviewProps {
     content: IBlogPostPreview;
@@ -34,6 +35,7 @@ export default class BlogPostPreview extends Component<IBlogPostPreviewProps, {}
                         <h2 className={styles.postTitle}>{this.title}</h2>
                     </a>
                 </Link>
+                <PostData publishedDate={this.props.content.first_publication_date} author={blogPost.post_author}/>
                 <div className={styles.outline}>
                     <RichText render={blogPost.outline} />
                     <Button variant="contained" color="primary" component={ButtonLink} href="/blog/post/[id]" as={this.url}>
