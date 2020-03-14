@@ -1,5 +1,5 @@
 import { Component } from "react";
-// import styles from './index.module.scss';
+import styles from './index.module.scss';
 import Link from "next/link";
 import { IBlogPostPreview } from "../../../api/models/blog_post";
 import { RichText } from "../../../api/prismic-types";
@@ -29,9 +29,9 @@ export default class BlogPostPreview extends Component<IBlogPostPreviewProps, {}
         return (
             <>
                 <Link href="/blog/post/[id]" as={this.url}>
-                    <a><h2>{this.title}</h2></a>
+                    <a className={styles.postTitle}><h2>{this.title}</h2></a>
                 </Link>
-                <div>
+                <div className={styles.outline}>
                     <RichText render={blogPost.outline} />
                     <Button variant="contained" color="primary" component={ButtonLink} href="/blog/post/[id]" as={this.url}>
                         View post

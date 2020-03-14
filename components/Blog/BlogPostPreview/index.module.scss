@@ -1,0 +1,18 @@
+@import '../../../colours.scss';
+
+
+.postTitle {
+    margin-bottom: 8px;
+
+    color: $theme-colour-secondary;
+
+    text-decoration: none; // changed from text-decoration:underline
+
+    :hover {
+        text-decoration: underline;
+    }
+}
+
+.outline {
+    margin-top: 1.5rem;
+}
