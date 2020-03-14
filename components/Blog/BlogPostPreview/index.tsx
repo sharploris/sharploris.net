@@ -32,7 +32,7 @@ export default class BlogPostPreview extends Component<IBlogPostPreviewProps, {}
                 <Link href="/blog/post/[id]" as={this.url}>
                     <a className={styles.postTitleLink}>
                         <FeaturedImage image={blogPost.featured_image}/>
-                        <h2 className={styles.postTitle}>{this.title}</h2>
+                        <h1 className={styles.postTitle}>{this.title}</h1>
                     </a>
                 </Link>
                 <PostData publishedDate={this.props.content.first_publication_date} author={blogPost.post_author}/>
