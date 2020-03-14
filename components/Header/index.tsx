@@ -4,6 +4,7 @@ import styles from './index.module.scss';
 import { AppBar, Toolbar, Button, Typography, IconButton, Hidden } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { homeUrl } from './../../utils/global-data';
+import ButtonLink from "../Common/ButtonLink";
 
 interface INavLink {
   displayText: string;
@@ -86,11 +87,9 @@ export default class Header extends Component<{}, IHeaderState> {
   private renderNavLink(link: INavLink) {
     return (
       <span className={styles.linkStyle} key={link.displayText}>
-        <Link href={link.url}>
-          <Button color="inherit">
-            {link.displayText}
-          </Button>
-        </Link>
+        <Button color="inherit" component={ButtonLink} href={link.url}>
+          {link.displayText}
+        </Button>
       </span>
     );
   }
