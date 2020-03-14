@@ -1,11 +1,9 @@
 import * as React from 'react'
 import { Component } from 'react';
 // import styles from './index.module.scss';
-import Link from 'next/link'
 import Layout from '../../components/Layout'
 import { IBlogPostPreview } from '../../api/models/blog_post';
 import GetBlogPostPreviewsGateway from '../../api/gateways/GetBlogPostPreviews/index';
-import { RichText } from '../../api/prismic-types';
 import GetAllBlogPostUidsGateway from '../../api/gateways/GetAllBlogPostUids';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import Router, { withRouter } from 'next/router';
@@ -13,6 +11,7 @@ import { Params } from 'next/dist/next-server/server/router';
 import { Badge } from '@material-ui/core';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import PageControls from '../../components/Common/PageControls';
+import BlogPostPreview from '../../components/Blog/BlogPostPreview';
 
 const pageSize = 10;
 
@@ -80,9 +79,7 @@ class BlogPage extends Component<IBlogPageProps, {}> {
 
     return (
       <div key={post.uid}>
-        <Link href="/blog/post/[id]" as={`/blog/post/${post.uid}`}>
-          <a>{RichText.asText(post.data.title)}</a>
-        </Link>
+        <BlogPostPreview content={post} />
         <hr/>
       </div>
     );
