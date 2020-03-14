@@ -1,4 +1,5 @@
 import { withRouter } from 'next/router';
+import styles from './index.module.scss';
 import Layout from '../../../components/Layout';
 import { Component } from 'react';
 import { WithRouterProps } from 'next/dist/client/with-router';
@@ -7,6 +8,8 @@ import { IBlogPost } from '../../../api/models/blog_post/index';
 import GetBlogPostByUidGateway from '../../../api/gateways/GetBlogPostByUid/index';
 import { RichText } from '../../../api/prismic-types';
 import { Params } from 'next/dist/next-server/server/router';
+import PostData from '../../../components/Blog/PostData';
+import FeaturedImage from '../../../components/Blog/FeaturedImage';
 
 interface IPostProps extends WithRouterProps {
   post: IBlogPost
@@ -48,14 +51,20 @@ class Post extends Component<IPostProps, {}> {
       return this.postNotFound();
     }
 
-    const postData = this.props.post.data;
-    const title = RichText.asText(postData.title);
-    const outline = RichText.asText(postData.outline);
+    const blogPostData = this.props.post.data;
+    const title = RichText.asText(blogPostData.title);
+    const outline = RichText.asText(blogPostData.outline);
 
     return (
-      <Layout title={title} description={outline} thumbnailUrl={postData.featured_image.url}>
-        <h1>{title}</h1>
-        <RichText render={postData.outline} />
+      <Layout title={title} description={outline} thumbnailUrl={blogPostData.featured_image.url}>
+        <FeaturedImage image={blogPostData.featured_image} />
+        <h1 className={styles.postTitle}>{title}</h1>
+        <PostData
+          publishedDate={this.props.post.first_publication_date}
+          author={blogPostData.post_author}
+        />
+        <i>{outline}</i>
+        <hr/>
       </Layout>
     );
   }
