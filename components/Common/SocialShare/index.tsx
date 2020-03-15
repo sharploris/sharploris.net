@@ -10,28 +10,42 @@ import {
 import { Facebook, Twitter, Reddit, WhatsApp, Email } from "@material-ui/icons";
 
 interface ISocialShareProps {
-    url: string;
+    location: string;
     title: string;
 }
 
-export default class SocialShare extends Component<ISocialShareProps, {}> {
-    private readonly url: string;
+interface ISocialShareState {
+    fullUrl: string;
+}
 
+export default class SocialShare extends Component<ISocialShareProps, ISocialShareState> {
     constructor(props: ISocialShareProps) {
         super(props);
 
-        //TODO: Add ability to load base URL
-        this.url = `https://sharploris-dev.now.sh${props.url}`;
+        this.state = {fullUrl: ""};
+    }
+
+    componentDidMount() {
+        const baseUrl = window.location.origin;
+        const fullUrl = `${baseUrl}${this.props.location}`;
+
+        this.setState({...this.state, fullUrl});
     }
 
     render() {
+        if(!this.state.fullUrl) {
+            return null;
+        }
+
+        const url = this.state.fullUrl;
+
         return (
             <div className={styles.shareButtons}>
-                <TwitterShareButton url={this.url} title={this.props.title}><Twitter fontSize="large" /></TwitterShareButton>
-                <RedditShareButton url={this.url} title={this.props.title}><Reddit fontSize="large" /></RedditShareButton>
-                <FacebookShareButton url={this.url}><Facebook fontSize="large" /></FacebookShareButton>
-                <WhatsappShareButton url={this.url} title={this.props.title}><WhatsApp fontSize="large" /></WhatsappShareButton>
-                <EmailShareButton url={this.url} subject={this.props.title}><Email fontSize="large" /></EmailShareButton>
+                <TwitterShareButton url={url} title={this.props.title}><Twitter fontSize="large" /></TwitterShareButton>
+                <RedditShareButton url={url} title={this.props.title}><Reddit fontSize="large" /></RedditShareButton>
+                <FacebookShareButton url={url}><Facebook fontSize="large" /></FacebookShareButton>
+                <WhatsappShareButton url={url} title={this.props.title}><WhatsApp fontSize="large" /></WhatsappShareButton>
+                <EmailShareButton url={url} subject={this.props.title}><Email fontSize="large" /></EmailShareButton>
             </div>
         )
     }

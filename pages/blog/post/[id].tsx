@@ -71,7 +71,7 @@ class Post extends Component<IPostProps, {}> {
           publishedDate={this.props.post.first_publication_date}
           author={blogPostData.post_author}
         />
-        <SocialShare url={this.url} title={title}></SocialShare>
+        <SocialShare location={this.url} title={title}></SocialShare>
         <i>{outline}</i>
         <hr/>
       </Layout>
