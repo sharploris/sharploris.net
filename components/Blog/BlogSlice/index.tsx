@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import { IBlogSlice, IPrismicText } from "../../../api/models/blog_post";
 import { RichText } from "../../../api/prismic-types";
 import BlogImage from "../BlogImage";
+import BlogEmbed from "../BlogEmbed";
 
 interface IBlogSliceProps {
     content: IBlogSlice;
@@ -18,11 +19,11 @@ export default class BlogSlice extends Component<IBlogSliceProps, {}> {
                 return <BlogImage image={slice.primary.image} caption={slice.primary.caption} />
             case "quote":
                 return this.renderQuote(slice.primary.quote);
-            // case "embed":
-            //     return <BlogEmbed content={slice.primary.embedded_content} caption={slice.primary.caption}/>
+            case "embed":
+                return <BlogEmbed content={slice.primary.embedded_content} caption={slice.primary.caption}/>
         }
 
-        return `Slice type ${slice.slice_type} not found`;
+        return <>{`ERROR: Slice type ${slice.slice_type} not found`}<br/></>;
     }
 
     renderText(text?: IPrismicText[]){
