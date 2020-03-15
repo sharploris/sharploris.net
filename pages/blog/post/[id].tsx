@@ -4,13 +4,14 @@ import Layout from '../../../components/Layout';
 import { Component } from 'react';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import GetAllBlogPostUidsGateway from '../../../api/gateways/GetAllBlogPostUids';
-import { IBlogPost } from '../../../api/models/blog_post/index';
+import { IBlogPost, IBlogSlice } from '../../../api/models/blog_post/index';
 import GetBlogPostByUidGateway from '../../../api/gateways/GetBlogPostByUid/index';
 import { RichText } from '../../../api/prismic-types';
 import { Params } from 'next/dist/next-server/server/router';
 import PostData from '../../../components/Blog/PostData';
 import FeaturedImage from '../../../components/Blog/FeaturedImage';
 import SocialShare from '../../../components/Common/SocialShare';
+import BlogSlice from '../../../components/Blog/BlogSlice';
 
 interface IPostProps extends WithRouterProps {
   post: IBlogPost
@@ -74,6 +75,11 @@ class Post extends Component<IPostProps, {}> {
         <SocialShare location={this.url} title={title}></SocialShare>
         <i>{outline}</i>
         <hr/>
+
+        <div className={styles.postWrapper}>
+          { blogPostData.body.map((slice: IBlogSlice, index: number) => {return (<BlogSlice content={slice} key={index} />)})}
+        </div>
+
       </Layout>
     );
   }
