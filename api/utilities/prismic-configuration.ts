@@ -1,6 +1,6 @@
 import Prismic from 'prismic-javascript'
 
-export const apiEndpoint = 'https://oiseau.cdn.prismic.io/api/v2'
+export const apiEndpoint = 'https://sharploris-net.cdn.prismic.io/api/v2'
 export const accessToken = ''
 
 // Client method to query documents from the Prismic repo
