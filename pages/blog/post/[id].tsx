@@ -10,6 +10,7 @@ import { RichText } from '../../../api/prismic-types';
 import { Params } from 'next/dist/next-server/server/router';
 import PostData from '../../../components/Blog/PostData';
 import FeaturedImage from '../../../components/Blog/FeaturedImage';
+import SocialShare from '../../../components/Common/SocialShare';
 
 interface IPostProps extends WithRouterProps {
   post: IBlogPost
@@ -44,8 +45,15 @@ export async function getStaticPaths() {
   }
 }
 
-//TODO: Could use material UI speed dial component for social media share icons on posts
 class Post extends Component<IPostProps, {}> {
+  private readonly url: string;
+
+  constructor(props: IPostProps) {
+    super(props);
+
+    this.url = this.props.router.asPath;
+  }
+
   public render() {
     if (!this.props.post) {
       return this.postNotFound();
@@ -63,6 +71,7 @@ class Post extends Component<IPostProps, {}> {
           publishedDate={this.props.post.first_publication_date}
           author={blogPostData.post_author}
         />
+        <SocialShare url={this.url} title={title}></SocialShare>
         <i>{outline}</i>
         <hr/>
       </Layout>
