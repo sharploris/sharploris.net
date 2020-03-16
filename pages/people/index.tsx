@@ -21,7 +21,7 @@ export default class PeoplePage extends Component {
                     twitterUrl="https://twitter.com/DanielW094"
                     linkedinUrl="https://www.linkedin.com/in/daniel-williams-4295b8a8"
                     githubUrl="https://github.com/DanielW093"
-                    portfolioUrl="http://danielwilliams.sharploris.net/"
+                    portfolioUrl="http://www.danielwilliams.sharploris.net/"
                     contactEmail="daniel@sharploris.net"
                   />
                   <h4>Software Engineer and Game Developer</h4>
