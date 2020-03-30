@@ -17,6 +17,7 @@
     "@zeit/next-sass": "^1.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.0",
+    "next-images": "^1.4.0",
     "node-sass": "^4.13.1",
     "prismic-javascript": "^2.2.0",
     "prismic-reactjs": "^1.2.0",

@@ -26,3 +26,21 @@
   color: inherit;
   text-decoration: none;
 }
+
+.socialMobileWrapper {
+  margin-left: 28px;
+  margin-top: 11px;
+}
+
+.socialIcon {
+  height: 30px !important;
+  width: 30px !important;
+  margin-left: 11px;
+  color: $theme-text-colour;
+
+  &.mobile {
+    margin-bottom: 11px;
+    margin-right: 11px;
+    margin-left: 0;
+  }
+}

@@ -1,43 +1,30 @@
 // next.config.js
 const _path = require("path");
 const withSass = require('@zeit/next-sass');
+const withImages = require('next-images');
 const fetch = require('isomorphic-unfetch');
 
-module.exports = withSass({
-  cssModules: true,
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]",
-    getLocalIdent: (loaderContext, localIdentName, localName, options) => {
-      const fileName = _path.basename(loaderContext.resourcePath);
-      const name = fileName.replace(/\.[^/.]+$/, "")
-
-      if (name.endsWith('.module')) {
-        return defaultGetLocalIdent(loaderContext, localIdentName, localName, options);
+module.exports = withSass (
+  withImages (
+    {
+      cssModules: true,
+      cssLoaderOptions: {
+        importLoaders: 1,
+        localIdentName: "[local]___[hash:base64:5]",
+        getLocalIdent: (loaderContext, localIdentName, localName, options) => {
+          const fileName = _path.basename(loaderContext.resourcePath);
+          const name = fileName.replace(/\.[^/.]+$/, "")
+    
+          if (name.endsWith('.module')) {
+            return defaultGetLocalIdent(loaderContext, localIdentName, localName, options);
+          }
+    
+          return localName;
+        }
       }
-
-      return localName;
     }
-  },
-  // exportTrailingSlash: true,
-  // exportPathMap: async function() {
-  //   const paths = {
-  //     '/': { page: '/' },
-  //     '/about': { page: '/about' },
-  //     '/people': { page: '/people' }
-  //   }
-
-  //   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-  //   const data = await res.json();
-  //   const shows = data.map(entry => entry.show);
-
-  //   shows.forEach(show => {
-  //     paths[`/post/${show.id}`] = { page: '/post/[id]', query: { id: show.id } };
-  //   });
-
-  //   return paths;
-  // }
-})
+  )
+);
 
 // Code lifted and modified from CSS loader - for generating hashes from localIdentName
 const _loaderUtils = require("loader-utils");

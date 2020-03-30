@@ -5,6 +5,8 @@ import { AppBar, Toolbar, Button, Typography, IconButton, Hidden } from "@materi
 import { Menu } from "@material-ui/icons";
 import { homeUrl } from './../../utils/global-data';
 import ButtonLink from "../Common/ButtonLink";
+import ItchIcon from "../../public/img/itchio-logo-textless-white.svg";
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 interface INavLink {
   displayText: string;
@@ -70,6 +72,9 @@ export default class Header extends Component<{}, IHeaderState> {
             <Menu />
           </IconButton>
         </Hidden>
+        <Hidden mdDown>
+          {this.renderSocialIcons(false)}
+        </Hidden>
       </span>
     )
   }
@@ -80,6 +85,7 @@ export default class Header extends Component<{}, IHeaderState> {
     return (
       <Hidden lgUp>
         {navBarArray.map(this.renderBurgerNavLink)}
+        {this.renderSocialIcons(true)}
       </Hidden>
     )
   }
@@ -106,6 +112,25 @@ export default class Header extends Component<{}, IHeaderState> {
         </Link>
       </div>
     );
+  }
+
+  private renderSocialIcons(mobile: boolean) {
+    let wrapperStyle = "";
+    if(mobile) {wrapperStyle = styles.socialMobileWrapper};
+
+    let socialIconStyle = styles.socialIcon;
+    if(mobile) {socialIconStyle += ` ${styles.mobile}`};
+
+    return(
+      <span className={wrapperStyle}>
+        <a href="http://sharp-loris.itch.io/" title="Sharp Loris itch.io" target="_blank" rel="noopener noreferrer">
+          <img src={ItchIcon} className={socialIconStyle} />
+        </a>
+        <a href="https://twitter.com/sharploris" title="Sharp Loris Twitter" target="_blank" rel="noopener noreferrer">
+          <TwitterIcon className={socialIconStyle}></TwitterIcon>
+        </a>
+      </span>
+    )
   }
 
   private toggleBurger = () => {
