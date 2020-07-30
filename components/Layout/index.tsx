@@ -37,6 +37,8 @@ export default class Layout extends Component<Props> {
   }
 
   render() {
+    if (!this.props.children) { return; }
+
     return (
       <ThemeProvider theme={theme}>
       
