@@ -1,1 +1,1 @@
-export const homeUrl: string = "/blog/1";
+export const homeUrl: string = "/people";
